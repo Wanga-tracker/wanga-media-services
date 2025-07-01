@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0a0a0a;
+  color: white;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  padding: 10px;
+}
+#menu-toggle {
+  background: none;
+  border: none;
+  color: cyan;
+  font-size: 1.5em;
+}
+#search {
+  background: #222;
+  border: none;
+  color: white;
+  padding: 5px;
+}
+#sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  height: 100%;
+  width: 250px;
+  background: #000;
+  transition: left 0.3s ease;
+  padding: 20px;
+  z-index: 1000;
+}
+#sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+#sidebar nav ul li {
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+#sidebar nav ul .sub-menu {
+  margin-top: 5px;
+  margin-left: 15px;
+  display: none;
+}
+.card {
+  background: #111;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px cyan;
+  transition: transform 0.5s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #111;
+}
