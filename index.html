@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracker Wanga - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Tracker Wanga - Portfolio</h1>
+        <p>Welcome to Tracker Wanga’s Portfolio – Bots, Websites, and Kenyan Solutions</p>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <a href="#" onclick="loadSection('dashboard')">Dashboard</a>
+        <a href="#" onclick="loadSection('bots')">WhatsApp Bots</a>
+        <a href="#" onclick="loadSection('government')">Government Services</a>
+        <a href="#" onclick="loadSection('website')">Website Creation</a>
+        <a href="#" onclick="loadSection('contact')">Contact Support</a>
+        <a href="#" onclick="loadSection('kra')">KRA Search</a>
+        <a href="#" onclick="searchService()">Search</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <!-- Dashboard Section -->
+        <div class="section" id="dashboard">
+            <h2>Main Dashboard</h2>
+            <button onclick="loadSection('bots')">Bots</button>
+            <button onclick="loadSection('contact')">Contact Support</button>
+            <button onclick="loadSection('website')">Website Creation</button>
+            <button onclick="loadSection('kra')">KRA Search</button>
+        </div>
+
+        <!-- Placeholder for WhatsApp Bots Section -->
+        <div class="section" id="bots">
+            <h2>WhatsApp Bots</h2>
+            <p>Content will be loaded from bots.html</p>
+            <button class="back-btn" onclick="window.history.back()">Back</button>
+        </div>
+
+        <!-- Placeholder for Government Services Section -->
+        <div class="section" id="government">
+            <h2>Government Services</h2>
+            <p>Content will be loaded from government.html</p>
+            <button class="back-btn" onclick="window.history.back()">Back</button>
+        </div>
+
+        <!-- Website Creation Section -->
+        <div class="section" id="website">
+            <h2 style="color: #00ccff;">Website Creation: Ksh 500</h2>
+            <textarea id="website-desc" placeholder="Describe your website..."></textarea>
+            <button onclick="submitWebsite()">Submit</button>
+            <button class="back-btn" onclick="window.history.back()">Back</button>
+        </div>
+
+        <!-- Contact Support Section -->
+        <div class="section" id="contact">
+            <h2>Contact Support</h2>
+            <div class="support-card">
+                <p>Tracker Wanga - Developer</p>
+                <button onclick="window.location.href='https://wa.me/254758476795?text=I%20need%20support'">Contact Me</button>
+            </div>
+            <div class="support-card">
+                <p>Follow me on TikTok</p>
+                <button onclick="window.location.href='tiktok://' || 'https://www.tiktok.com/@trackerwanga'">TikTok</button>
+            </div>
+            <div class="support-card">
+                <p>Search KRA Details</p>
+                <button onclick="window.location.href='https://www.kra.go.ke/'">KRA Search</button>
+            </div>
+            <button class="back-btn" onclick="window.history.back()">Back</button>
+        </div>
+
+        <!-- Placeholder for KRA Search Section -->
+        <div class="section" id="kra">
+            <h2>KRA Search</h2>
+            <p>Content will be loaded from kra.html</p>
+            <button class="back-btn" onclick="window.history.back()">Back</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Created by Tracker Wanga | Email: trackerwanga@gmail.com | Phone/WhatsApp: +254758476795 | Facebook/TikTok/Twitter/X/Instagram: trackerwanga | YouTube: @wangaelijah</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
