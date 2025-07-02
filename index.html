@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tracker Wanga - Cyber Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/5968/5968940.png">
+  <style>
+    .loader {
+      border: 8px solid #2d2f5f;
+      border-top: 8px solid #00f7ff;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    #loader-wrapper {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: #0f172a;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-white font-sans">
+  <!-- Loading Spinner -->
+  <div id="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="flex items-center justify-between p-4 bg-slate-800 shadow-lg">
+    <button onclick="toggleSidebar()" class="text-2xl">☰</button>
+    <h1 class="text-xl font-bold text-cyan-400">Tracker Wanga</h1>
+    <div></div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-slate-900 shadow-lg z-40 transform -translate-x-full transition-transform duration-300">
+    <div class="p-4 space-y-3">
+      <div class="flex justify-between items-center">
+        <h2 class="text-cyan-400 text-lg font-semibold">Menu</h2>
+        <button onclick="toggleSidebar()" class="text-white text-lg">✖</button>
+      </div>
+      <ul class="space-y-2">
+        <li><a href="#dashboard" class="block hover:text-cyan-400">🏠 Dashboard</a></li>
+        <li><a href="bots.html" class="block hover:text-cyan-400">🤖 WhatsApp Bots</a></li>
+        <li><a href="website.html" class="block hover:text-cyan-400">🌐 Website Creating</a></li>
+        <li><a href="#services" class="block hover:text-cyan-400">🛠️ Website Developing</a></li>
+        <li><a href="#api" class="block hover:text-cyan-400">🔗 API and Services</a></li>
+        <li><a href="#kra" class="block hover:text-cyan-400">🧾 KRA Services</a></li>
+        <li><a href="#helb" class="block hover:text-cyan-400">🎓 HELB Services</a></li>
+        <li><a href="#editing" class="block hover:text-cyan-400">📝 Editing Documents</a></li>
+        <li><a href="#conduct" class="block hover:text-cyan-400">🛡️ Good Conduct</a></li>
+        <li><a href="#nssf" class="block hover:text-cyan-400">🏥 NSSF & SHA/SHI</a></li>
+        <li><a href="#dl" class="block hover:text-cyan-400">🚗 DL Renewal</a></li>
+        <li><a href="#cv" class="block hover:text-cyan-400">📄 CV & Cover Letter</a></li>
+        <li><a href="#crb" class="block hover:text-cyan-400">💳 CRB Clearance</a></li>
+        <li><a href="#social" class="block hover:text-cyan-400">📱 Social Media Help</a></li>
+        <li><a href="#cyber" class="block hover:text-cyan-400">💻 All Cyber Services</a></li>
+        <li><a href="#contact" class="block hover:text-cyan-400">📞 Contact Support</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main id="main-content" class="p-4 pt-6 space-y-10 transition-all duration-300">
+    <!-- Search -->
+    <div class="flex justify-center">
+      <input type="text" placeholder="Search services..." class="w-full max-w-md p-2 rounded bg-slate-800 text-white border border-slate-600 focus:outline-none focus:border-cyan-400" oninput="filterCards(this.value)">
+    </div>
+
+    <!-- Dashboard -->
+    <section id="dashboard">
+      <h2 class="text-2xl font-bold mb-4">🚀 Cyber & Tech Services Overview</h2>
+      <p class="mb-6 text-slate-400">Get professional help with government services, bot automation, websites, and more—all in one place!</p>
+      <div id="card-container" class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <!-- Cards inserted by JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center p-4 mt-10 text-slate-500 text-sm border-t border-slate-700">
+    &copy; 2025 Tracker Wanga | Email: trackerwanga@gmail.com | WhatsApp: +254758476795
+  </footer>
+
+  <script>
+    const services = [
+      { emoji: "🤖", title: "WHATSAPP BOT", desc: "Deploy group and automation bots.", link: "/bots" },
+      { emoji: "🌐", title: "WEBSITE CREATING", desc: "Affordable websites with custom design." },
+      { emoji: "🛠️", title: "WEBSITE DEVELOPING", desc: "Advanced features and hosting setup." },
+      { emoji: "🔗", title: "API AND SERVICES", desc: "Integrate your site or bot with APIs." },
+      { emoji: "🧾", title: "KRA PENALTIES / FINES", desc: "Help with iTax, KRA waivers and updates." },
+      { emoji: "🎓", title: "HELB (All services)", desc: "Loans, repayment, and student help." },
+      { emoji: "📝", title: "Editing Documents", desc: "CVs, certificates, PDFs and more." },
+      { emoji: "🛡️", title: "Good Conduct", desc: "Help getting your certificate." },
+      { emoji: "🏥", title: "NSSF & SHA/SHI", desc: "Registration and support." },
+      { emoji: "🚗", title: "DL Renewal", desc: "Renew your Driving License." },
+      { emoji: "📄", title: "CV & Cover Letter", desc: "CV editing and writing services." },
+      { emoji: "💳", title: "CRB Clearance", desc: "Clear CRB records fast." },
+      { emoji: "📱", title: "Social Media Help", desc: "Account setup and management." },
+      { emoji: "💻", title: "All Cyber Services", desc: "Any IT-related support you need." },
+      { emoji: "📞", title: "Contact Support", desc: "Talk to Tracker directly." },
+    ];
+
+    const cardContainer = document.getElementById("card-container");
+    services.forEach(service => {
+      const card = document.createElement("div");
+      card.className = "bg-slate-800 p-4 rounded-lg shadow hover:shadow-lg hover:border-cyan-400 border border-transparent cursor-pointer";
+      card.innerHTML = `<h3 class="text-lg font-semibold mb-2">${service.emoji} ${service.title}</h3><p class="text-slate-400 text-sm">${service.desc}</p>`;
+      if (service.link) {
+        card.onclick = () => window.location.href = service.link;
+      }
+      cardContainer.appendChild(card);
+    });
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("-translate-x-full");
+    }
+
+    function filterCards(value) {
+      const lower = value.toLowerCase();
+      const cards = cardContainer.children;
+      Array.from(cards).forEach(card => {
+        const match = card.textContent.toLowerCase().includes(lower);
+        card.style.display = match ? "block" : "none";
+      });
+    }
+
+    window.onload = () => {
+      document.getElementById("loader-wrapper").style.display = "none";
+    };
+  </script>
+</body>
+</html>
