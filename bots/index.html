@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WhatsApp Bots | Tracker Wanga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0b0f1a;
+      color: white;
+    }
+    .loader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0b0f1a;
+      z-index: 50;
+    }
+    .spinner {
+      border: 6px solid rgba(255,255,255,0.1);
+      border-top: 6px solid #00ffe5;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <!-- Loading Spinner -->
+  <div class="loader" id="loader">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="text-center py-8">
+    <h1 class="text-4xl font-bold text-cyan-400">Tracker Wanga Bots</h1>
+    <p class="text-sm text-cyan-300">Ready-to-Deploy WhatsApp Automation Bots for Everyone</p>
+  </header>
+
+  <!-- Bots Section -->
+  <section class="px-4 md:px-16 pb-20">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Bot Card -->
+      <div class="bg-[#141c2e] hover:scale-105 duration-300 rounded-2xl p-6 shadow-lg border border-cyan-500">
+        <h2 class="text-xl font-semibold text-cyan-400">✅ CypherX</h2>
+        <p class="text-sm text-gray-300 mt-2">Powerful AI bot for auto-replies, media, education & more.</p>
+        <a href="https://wa.me/254758476795?text=Hello%2C%20I%20want%20to%20buy%20CypherX%20WhatsApp%20bot%20for%20Ksh%20100" target="_blank">
+          <button class="mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-xl shadow-md">Buy for Ksh 100</button>
+        </a>
+      </div>
+
+      <!-- Repeat cards for other bots -->
+      <div class="bg-[#141c2e] hover:scale-105 duration-300 rounded-2xl p-6 shadow-lg border border-cyan-500">
+        <h2 class="text-xl font-semibold text-cyan-400">✅ Space-md</h2>
+        <p class="text-sm text-gray-300 mt-2">Group automation bot with games, polling, and auto tools.</p>
+        <a href="https://wa.me/254758476795?text=Hello%2C%20I%20want%20to%20buy%20Space-md%20WhatsApp%20bot%20for%20Ksh%20100" target="_blank">
+          <button class="mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-xl shadow-md">Buy for Ksh 100</button>
+        </a>
+      </div>
+
+      <div class="bg-[#141c2e] hover:scale-105 duration-300 rounded-2xl p-6 shadow-lg border border-cyan-500">
+        <h2 class="text-xl font-semibold text-cyan-400">✅ BWM-QUANTUM</h2>
+        <p class="text-sm text-gray-300 mt-2">Multilingual bot with YouTube/Spotify music and admin tools.</p>
+        <a href="https://wa.me/254758476795?text=Hello%2C%20I%20want%20to%20buy%20BWM-QUANTUM%20WhatsApp%20bot%20for%20Ksh%20100" target="_blank">
+          <button class="mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-xl shadow-md">Buy for Ksh 100</button>
+        </a>
+      </div>
+
+      <div class="bg-[#141c2e] hover:scale-105 duration-300 rounded-2xl p-6 shadow-lg border border-cyan-500">
+        <h2 class="text-xl font-semibold text-cyan-400">✅ KANGO-XMD</h2>
+        <p class="text-sm text-gray-300 mt-2">Advanced chatbot with smart moderation and global command system.</p>
+        <a href="https://wa.me/254758476795?text=Hello%2C%20I%20want%20to%20buy%20KANGO-XMD%20WhatsApp%20bot%20for%20Ksh%20100" target="_blank">
+          <button class="mt-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-xl shadow-md">Buy for Ksh 100</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-sm text-gray-500">
+    © 2025 Tracker Wanga | All rights reserved
+  </footer>
+
+  <script>
+    // Hide loader after a short delay
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('loader');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 1200); // 1.2 seconds
+    });
+  </script>
+</body>
+</html>
