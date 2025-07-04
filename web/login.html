@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Tracker Wanga</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen text-white">
+  <div class="bg-gray-800 p-8 rounded-xl shadow-xl w-full max-w-sm">
+    <h2 class="text-2xl font-bold mb-6 text-center">Login to Your Account</h2>
+
+    <form id="login-form" class="space-y-4">
+      <input type="email" id="email" placeholder="Email" required class="w-full px-4 py-2 rounded-lg bg-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+      <input type="password" id="password" placeholder="Password" required class="w-full px-4 py-2 rounded-lg bg-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400" />
+      <button type="submit" id="login-btn" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 rounded-lg">Login</button>
+    </form>
+
+    <div id="alert-message" class="mt-4 text-sm text-center"></div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const loginForm = document.getElementById("login-form");
+    const alertMessage = document.getElementById("alert-message");
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alertMessage.textContent = "Login successful! Redirecting...";
+          alertMessage.className = "mt-4 text-green-400 text-sm text-center animate-pulse";
+          setTimeout(() => {
+            window.location.href = "/web/dashboard.html";
+          }, 2000);
+        })
+        .catch((error) => {
+          alertMessage.textContent = `Error: ${error.message}`;
+          alertMessage.className = "mt-4 text-red-500 text-sm text-center animate-shake";
+        });
+    });
+  </script>
+</body>
+</html>
