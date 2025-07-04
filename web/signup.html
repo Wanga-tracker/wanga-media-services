@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup - Website Hosting</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module" src="/firebase.js"></script>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/888/888879.png">
+</head>
+<body class="bg-gradient-to-br from-slate-900 to-black text-white min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-md bg-slate-800 rounded-xl shadow-xl p-6 border border-slate-700">
+    <h1 class="text-3xl font-bold mb-6 text-center text-green-400 tracking-wide">🚀 Create Hosting Account</h1>
+    <form id="signupForm" class="space-y-4">
+      <input type="text" id="name" placeholder="Full Name" required class="w-full p-3 rounded bg-slate-700 border border-slate-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400">
+      <input type="tel" id="phone" placeholder="Phone Number" required class="w-full p-3 rounded bg-slate-700 border border-slate-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400">
+      <input type="email" id="email" placeholder="Email Address" required class="w-full p-3 rounded bg-slate-700 border border-slate-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400">
+      <input type="password" id="password" placeholder="Password" required class="w-full p-3 rounded bg-slate-700 border border-slate-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400">
+      <button type="submit" class="w-full bg-green-500 text-black font-semibold py-3 rounded hover:bg-green-400 transition-all duration-200">Sign Up</button>
+      <p class="text-sm text-center text-slate-400">Already have an account? <a href="login.html" class="text-green-400 underline">Login here</a></p>
+    </form>
+    <div id="alertBox" class="mt-4 hidden text-center p-3 rounded text-sm font-semibold"></div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { firebaseConfig } from '/firebase.js';
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const form = document.getElementById("signupForm");
+    const alertBox = document.getElementById("alertBox");
+
+    function showAlert(message, success = true) {
+      alertBox.textContent = message;
+      alertBox.classList.remove("hidden");
+      alertBox.classList.toggle("bg-green-600", success);
+      alertBox.classList.toggle("bg-red-600", !success);
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, password);
+        const uid = userCred.user.uid;
+        await setDoc(doc(db, "users", uid), {
+          fullName: name,
+          phone: phone,
+          email: email,
+          plan: "none",
+          status: "pending"
+        });
+        showAlert("✅ Signup successful! Redirecting to dashboard...", true);
+        setTimeout(() => {
+          window.location.href = "/web/dashboard.html";
+        }, 2000);
+      } catch (error) {
+        showAlert("❌ " + error.message, false);
+      }
+    });
+  </script>
+</body>
+</html>
